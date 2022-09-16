@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as Diolag from '@radix-ui/react-dialog';
 import { GameBanner } from './components/GameBanner';
-import { DiscordLogo, GameController } from 'phosphor-react';
+import { GameController } from 'phosphor-react';
 import { CreateAdBanner } from './components/CreateAdBanner';
 
 import './styles/main.css';
@@ -28,7 +28,7 @@ function App() {
         setGames(data)
         console.log(data)
       })
-  }, [])
+  }, []);
 
   return (
     <div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
