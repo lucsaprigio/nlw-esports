@@ -24,6 +24,7 @@ export function Home() {
             .then(response => response.json())
             .then(data => setGames(data));
     }, []);
+    
     return (
         <Background>
             <SafeAreaView style={styles.container}>
