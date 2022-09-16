@@ -1,7 +1,10 @@
-import { View } from 'react-native';
-import { DuiInfo } from '../DuiInfo';
+import { TouchableOpacity, View, Text } from 'react-native';
+import { GameController } from 'phosphor-react-native';
+
+import { DuoInfo } from '../DuoInfo';
 
 import { styles } from './styles';
+import { THEME } from '../../theme';
 
 export interface DuoCardProps {
   id: string;
@@ -15,27 +18,42 @@ export interface DuoCardProps {
 
 interface Props {
   data: DuoCardProps;
+  onConnect: () => void;
 }
 
-export function DuoCard({ data }: Props) {
+export function DuoCard({ data, onConnect }: Props) {
   return (
     <View style={styles.container}>
-      <DuiInfo
+      <DuoInfo
         label="Nome"
         value={data.name}
       />
-      <DuiInfo
+      <DuoInfo
         label="Tempo de Jogo"
         value={`${data.yearsPlaying} anos`}
       />
-      <DuiInfo
+      <DuoInfo
         label="Disponibilidade"
         value={`${data.weekDays.length} dias \u2022 ${data.hourStart} - ${data.hourEnd}`}
       />
-      <DuiInfo
-        label="Nome"
-        value="Lucas"
+      <DuoInfo
+        label="Chamada de áudio"
+        value={data.useVoiceChannel ? "Sim" : "Não"}
+        colorValue={data.useVoiceChannel ? THEME.COLORS.SUCCESS : THEME.COLORS.ALERT}
       />
+
+      <TouchableOpacity 
+      style={styles.button}
+      onPress={onConnect}
+      >
+          <GameController 
+            color={THEME.COLORS.TEXT}
+          />
+
+          <Text style={styles.buttonTitle}>
+
+          </Text>
+      </TouchableOpacity>
     </View>
   );
 }
